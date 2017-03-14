@@ -48,12 +48,12 @@ Order prefixed to each filename.
 
 <p>Example usage:</p>
 <pre>
-	 class { 'lldpd':
-	 	purge_configs => true
-	  }
+class { 'lldpd':
+	purge_configs => true
+}
 
-	 lldpd::config { 'hostname': 
-	 	config => "configure system hostname 'specialsnowflake.example.com'"
-	}
+lldpd::config { 'hostname': 
+	config => "configure system hostname 'specialsnowflake.example.com'"
+}
 </pre>
 Results in file /etc/lldpd.d/10_hostname.conf with contents of config param.  At every startup lldpd will execute: lldpcli configure system hostname 'specialsnowflake.example.com'</pre> 
