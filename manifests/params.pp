@@ -8,6 +8,7 @@ class lldpd::params {
   $service_enable = true
   $manage_repo = true
   $purge_configs = false
+
    
   case $::osfamily {
 

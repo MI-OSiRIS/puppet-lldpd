@@ -7,6 +7,7 @@ class lldpd (
   $service_enable      = $lldpd::params::service_enable,
   $autoupgrade         = $lldpd::params::autoupgrade,
   $purge_configs       = $lldpd::params::purge_configs
+
 ) inherits lldpd::params {
 
   validate_bool($service_enable)
@@ -62,6 +63,7 @@ class lldpd (
           case $::operatingsystemmajrelease {
             '6','7': {
               yumrepo { "vbernat-home-rhel${::operatingsystemmajrelease}":
+                descr     => "vbernat-lldpd-Rhel${::operatingsystemmajrelease}",
                 baseurl   => $lldpd::params::repo_baseurl,
                 gpgcheck  => 1,
                 gpgkey    => $lldpd::params::repo_gpg,

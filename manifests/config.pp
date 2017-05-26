@@ -3,6 +3,7 @@ define lldpd::config
 	$config = "${name}",
 	$order = 10,
 	$ensure = 'present'
+
 ){
 
 	validate_string($config)
