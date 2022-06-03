@@ -61,7 +61,7 @@ class lldpd (
     case $::osfamily {
       'RedHat': { 
           case $::operatingsystemmajrelease {
-            '6','7': {
+            '6','7','8': {
               yumrepo { "vbernat-home-rhel${::operatingsystemmajrelease}":
                 descr     => "vbernat-lldpd-Rhel${::operatingsystemmajrelease}",
                 baseurl   => $lldpd::params::repo_baseurl,
