@@ -13,16 +13,8 @@ class lldpd::params {
   case $::osfamily {
 
     'RedHat': {
-      case $::operatingsystemmajrelease {
-        '7': {
-          $repo_baseurl = 'http://download.opensuse.org/repositories/home:/vbernat/RHEL_7/'
-          $repo_gpg = 'http://download.opensuse.org/repositories/home:/vbernat/RHEL_7//repodata/repomd.xml.key'
-        }
-        '6': {
-          $repo_baseurl = 'http://download.opensuse.org/repositories/home:/vbernat/RedHat_RHEL-6/'
-          $repo_gpg = 'http://download.opensuse.org/repositories/home:/vbernat/RedHat_RHEL-6//repodata/repomd.xml.key'
-        }
-      }
+      $repo_baseurl = "http://download.opensuse.org/repositories/home:/vbernat/CentOS_$::operatingsystemmajrelease/"
+      $repo_gpg =     "http://download.opensuse.org/repositories/home:/vbernat/CentOS_$::operatingsystemmajrelease/repodata/repomd.xml.key"
     }
 
     'Debian': { }
