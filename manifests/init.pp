@@ -10,9 +10,9 @@ class lldpd (
 
 ) inherits lldpd::params {
 
-  validate_bool($service_enable)
-  validate_bool($manage_repo)
-  validate_bool($purge_configs)
+  Boolean($service_enable)
+  Boolean($manage_repo)
+  Boolean($purge_configs)
 
   case $ensure {
     /(present)/: {
