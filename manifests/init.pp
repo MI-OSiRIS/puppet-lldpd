@@ -58,12 +58,12 @@ class lldpd (
   }
 
   if $manage_repo {
-    case $::osfamily {
+    case $facts['os']['family'] {
       'RedHat': { 
-          case $::operatingsystemmajrelease {
+          case $facts['os']['release']['major'] {
             '6','7','8': {
-              yumrepo { "vbernat-home-rhel${::operatingsystemmajrelease}":
-                descr     => "vbernat-lldpd-Rhel${::operatingsystemmajrelease}",
+              yumrepo { "vbernat-home-rhel${facts['os']['release']['major']}":
+                descr     => "vbernat-lldpd-Rhel${facts['os']['release']['major']}",
                 baseurl   => $lldpd::params::repo_baseurl,
                 gpgcheck  => 1,
                 gpgkey    => $lldpd::params::repo_gpg,
@@ -77,7 +77,7 @@ class lldpd (
       #'Debian': { }
       #'Suse': { }
       default: {
-        fail("Unsupported platform, cannot manage repo: ${::osfamily}")
+        fail("Unsupported platform, cannot manage repo: ${facts['os']['family']}")
       }
     }
   } 

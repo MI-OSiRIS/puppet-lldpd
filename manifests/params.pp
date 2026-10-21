@@ -10,17 +10,17 @@ class lldpd::params {
   $purge_configs = false
 
    
-  case $::osfamily {
+  case $facts['os']['family'] {
 
     'RedHat': {
-      $repo_baseurl = "http://download.opensuse.org/repositories/home:/vbernat/CentOS_$::operatingsystemmajrelease/"
-      $repo_gpg =     "http://download.opensuse.org/repositories/home:/vbernat/CentOS_$::operatingsystemmajrelease/repodata/repomd.xml.key"
+      $repo_baseurl = "http://download.opensuse.org/repositories/home:/vbernat/CentOS_${facts['os']['release']['major']}/"
+      $repo_gpg =     "http://download.opensuse.org/repositories/home:/vbernat/CentOS_${facts['os']['release']['major']}/repodata/repomd.xml.key"
     }
 
     'Debian': { }
     'Suse': { }
     default: {
-      fail("Unsupported platform: ${::osfamily}")
+      fail("Unsupported platform: ${facts['os']['family']}")
     }
   }
 }
